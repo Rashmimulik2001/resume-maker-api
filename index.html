@@ -1,0 +1,704 @@
+<html>
+    <head>
+        <!-- <script type="text/javascript"> query = () => location.search.split('mis=')[1]; </script> -->
+        <title>
+            Resume Maker
+        </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/side_pane.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/options.css">
+</head>
+
+<body>
+    <div class="menu-wrap">
+        <input type="checkbox" class="toggler" onchange="adjust_width(this)">
+        <div class="hamburger"><img src="sources/collapse.png"></div>
+        <div class="menu">
+            <div id="left">
+                <div>
+                    <br>
+                    <section class = 'row justify-content-center' style ="margin: 5%">
+                        <h1 id = "heading" class="col-md-12" style ="color: white">INFORMATION GATHERING</h1>
+                </section>
+                <div class = 'container' style="padding: 15px;">
+                    <span class = 'd-flex justify-content-center flex-column d-sm-flex flex-sm-row mb-3'  style="width : 100%;">
+                        <button class= 'mainbtn col-md-6' id = "action" onclick="create()">Save Resume</button>
+                        <button class= 'mainbtn col-md-6' id = "print" onclick="printDiv()">Print Resume</button>  
+                    </span>
+                </div>
+                <div class = 'container' style="padding: 5px; margin: 5px;">
+                    <span class = 'd-flex justify-content-center flex-column d-sm-flex flex-sm-row mb-3'  style="width : 100%;">
+                    <span class="custom-dropdown big">
+                        <select id="category" onchange="toggle(this)">
+                            <option value="0" name="pinfo" selected>Personal Information</option>
+                            <option value="1" name="edu">Education</option>
+                            <option value="2" name="proj">Projects</option>
+                            <option value="3" name="wrkexp">Past Work Experience</option>
+                            <option value="4" name="por">Positions Of Responsibility</option>
+                            <option value="5" name="skills">Skills</option>
+                            <option value="6" name="cont">Contact Details</option>
+                        </select>
+                    </span>
+                    </span>
+                </div>
+
+                    <hr>
+
+                    <div class="container" id="pinfo" style="display: block;">
+                        <h3 class="text-center inp_title">A. Personal Information</h3>
+                        <div class="row">
+                            <label class="col-md-2 col-sm-2">Name</label>
+                            <section class="col-md-8 col-sm-10 textbox">
+                                <input type="text" placeholder="Name" onkeyup="update(this)" id="inp_name">
+                            </section>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-2 col-sm-2">Email</label>
+                            <section class="col-md-4 col-sm-4 textbox">
+                                <input type="text" placeholder="Email" id="inp_email" onkeyup="update(this)">
+                            </section>
+                            <label class="col-md-2 col-sm-2">Contact No.</label>
+                            <section class="col-md-4 col-sm-4 textbox">
+                                <input type="number" placeholder="Contact No." maxlength="10" minlength="10"
+                                    id="inp_contact" onkeyup="update(this)">
+                            </section>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-2 col-sm-2">Website</label>
+                            <section class="col-md-8 col-sm-10 textbox">
+                                <input type="text" placeholder="Website" onkeyup="update(this)" id="inp_web">
+                            </section>
+                        </div>
+                        <div class="row" id = 'uid_mis'>
+                            <label class="col-md-2 col-sm-2">MIS</label>
+                            <section class="col-md-8 col-sm-10 textbox">
+                                <input type="text" placeholder="MIS" id="inp_mis">
+                            </section>
+                        </div>
+                        <span class = 'd-flex justify-content-center flex-column d-sm-flex flex-sm-row mb-3'  style="width : 100%;">
+                            <button class= 'mainbtn col-md-6' id = "action" onclick="reset()">Reset Section</button>
+                        </span>
+                    </div>
+
+                    <div class="container" id="edu" style="display: none;">
+                        <h3 class="text-center inp_title">B. EDUCATION</h3>
+                        <div class="container" id="edu_1">
+                                <div class="row">
+                                        <label class="col-md-2 col-sm-12">Study Program</label>
+                                        <section class="col-md-8 col-sm-12 textbox">
+                                            <input type="text" placeholder="B.Tech/Sec. School etc.." onkeyup="update(this)"
+                                                id="inp_stdp1">
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-2 col-sm-12">Field Of Study</label>
+                                        <section class="col-md-8 col-sm-12 textbox">
+                                            <input type="text" placeholder="Field Of Study(Can be Blank)" onkeyup="update(this)"
+                                                id="inp_fos1">
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                            <label class="col-md-2 col-sm-2">Year</label>
+                                            <section class="col-md-4 col-sm-4 textbox">
+                                                <input type="year" placeholder="Year" onkeyup="update(this)"
+                                                    id="inp_yr1">
+                                            </section>
+                                            <label class="col-md-2 col-sm-2">CGPA/%</label>
+                                            <section class="col-md-4 col-sm-4 textbox">
+                                                <input type="text" placeholder="CGPA/%" onkeyup="update(this)"
+                                                    id="inp_cgpa1">
+                                            </section>
+                                        </div>
+                                <div class="row">
+                                        <label class="col-md-3 col-sm-12">University</label>
+                                        <section class="col-md-9 col-sm-12 textbox">
+                                            <input type="text" placeholder="University Name" onkeyup="update(this)"
+                                                id="inp_uni1">
+                                        </section>
+                                    </div>     
+                            <div class="row">
+                                <label class="col-md-3 col-md-12">Institution</label>
+                                <section class="col-md-9 col-sm-12 textbox">
+                                    <input type="text" placeholder="Institution Name" onkeyup="update(this)"
+                                        id="inp_inst1">
+                                </section>
+                            </div>
+                            <div class="row">
+                                    <label class="col-md-2 col-sm-2">City</label>
+                                    <section class="col-md-4 col-sm-4 textbox">
+                                        <input type="text" placeholder="City" id="inp_city1" onkeyup="update(this)">
+                                    </section>
+                                    <label class="col-md-2 col-sm-2">State</label>
+                                    <section class="col-md-4 col-sm-4 textbox">
+                                        <input type="text" placeholder="State" onkeyup="update(this)" onkeyup="update(this)"
+                                            id="inp_state1">
+                                    </section>
+                                </div>
+                                  
+                            
+                        </div>
+                        <span class = 'd-flex justify-content-center flex-column d-sm-flex flex-sm-row mb-3' >
+                        <button class= 'col-sm-4' id='add_edu' onClick="add_edu();">Add
+                            Field</button>
+                        <button id='rem_edu' class= 'col-sm-4' onClick="rem_edu();">Remove
+                            Field</button>
+                        <button id='toggle_edu' class= 'col-sm-4' onClick="toggle_edu();">Hide Education</button>
+                    </span>
+                    </div>
+
+                    <div class="container" id="proj" style="display: none;">
+                        <h3 class="text-center inp_title">C. PROJECTS</h3>
+                        <div class="container" id="proj_1">
+                            <div class="row">
+                                <label class="col-md-3 col-md-3">Title</label>
+                                <section class="col-md-9 col-sm-9 textbox">
+                                    <input type="text" placeholder="Title Of Project" onkeyup="update(this)"
+                                        id="inp_ptitle1">
+                                </section>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-3 col-sm-3">Start Date</label>
+                                <section class="col-md-9" style="margin-bottom: 5%;">
+                                    <!--STYLING PENDING OF ALL DATES-->
+                                    <input class="per_date_inputs" type="month" name="date" id="inp_sdate1"
+                                        onchange="update(this)" placeholder="MM-YYYY format" value="2016-03">
+                                    <!--change to today's date later-->
+                                </section>
+                                <label class="col-md-3 col-sm-3">End Date</label>
+                                <section class="col-md-9">
+                                    <input type="month" name="date" onchange="update(this)" id="inp_fdate1"
+                                        placeholder="MM-YYYY format" value="2016-03">
+                                </section><br>
+                                <div class="col-md-12">
+                                    <span class="col-sm-9"
+                                        style="padding: 0; font-size: small; color :white;">
+                                        Present</span>
+                                            <input onchange="hide(this)" type="checkbox"
+                                                style="transform: scale(1.3);" class="col-sm-3" value="Present" id="chk_fdate1" />
+                                </div><br>
+                                <label class="col-md-12 col-sm-12 text-center" style=" margin :5% 0 2% 0;"> Project
+                                    Description</label>
+                                <section class="col-md-12 textarea" style="margin-bottom: 5%;">
+                                    <textarea class="col-md-12" type="text" id="inp_pdesc1" onkeyup="update(this)"
+                                        placeholder="Project Description"></textarea>
+                                    <!--ADD MORE WORK DESCRIPTION FEATURE HERE LATER......-->
+                                </section>
+
+                            </div>
+                        </div>
+                       <span class = 'd-flex justify-content-center flex-column d-sm-flex flex-sm-row mb-3' >
+                        <button class= 'col-sm-4' id='add_proj' onClick="add_proj();">Add
+                            Project</button>
+                        <button id='rem_proj' class= 'col-sm-4' onClick="rem_proj();">Remove
+                            Project</button>
+                        <button id='toggle_proj' class= 'col-sm-4' onClick="toggle_proj();">Hide Projects</button>
+                    </span>
+                    </div>
+
+                    <div class="container" id="wrkexp" style="display: none;">
+                        <h3 class="text-center inp_title">D. PAST WORK EXPERIENCE</h3>
+                        <div class="container" id="exp_1">
+                            <div class="row">
+                                <label class="col-md-3 col-md-3">Job Title</label>
+                                <section class="col-md-9 col-sm-9 textbox" style="margin-bottom: 2%;">
+                                    <input type="text" placeholder="Job Title" onkeyup="update(this)" id="inp_jtitle1">
+                                </section>
+                                <label class="col-md-3 col-md-3">Organisation
+                                    /Company</label>
+                                <section class="col-md-9 col-sm-9 textbox">
+                                    <input type="text" placeholder="Organisation/Company" onkeyup="update(this)"
+                                        id="inp_oname1">
+                                </section>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-12 col-sm-12 text-center">Job Period</label>
+                                <label class="col-md-3 col-sm-3">From</label>
+                                <section class="col-md-9" style="margin-bottom: 5%;">
+                                    <!--STYLING PENDING OF ALL DATES-->
+                                    <input class="per_date_inputs" type="month" name="date" id="inp_jdate1"
+                                        onchange="update(this)" placeholder="MM-YYYY format" value="2016-03">
+                                    <!--change to today's date later-->
+                                </section>
+                                <label class="col-md-3 col-sm-3">To</label>
+                                <!--ADD PRESENT FACILITY-->
+                                <section class="col-md-9">
+                                    <input class="per_date_inputs" type="month" name="date" onchange="update(this)" id="inp_ldate1"
+                                        placeholder="MM-YYYY format" value="2016-03">
+                                </section>
+                                <br>
+
+                                <div class="col-md-12">
+                                    <span class="col-sm-9"
+                                        style="padding: 0; font-size: small; color :white;">
+                                        Present</span>
+                                            <input onchange="hide(this)" type="checkbox"
+                                                style="transform: scale(1.3);" class="col-sm-3" value="Present" id="chk_ldate1" />
+                                </div>
+                                <br>
+                                <label class="col-md-12 col-sm-12 text-center" style=" margin :5% 0 2% 0;">Work
+                                    Description</label>
+                                <section class="col-md-12 textarea" style="margin-bottom: 5%;">
+                                    <textarea class="col-md-12" type="text" id="inp_wdesc1" onkeyup="update(this)"
+                                        placeholder="Worked On...."></textarea>
+                                </section>
+
+                            </div>
+                        </div>
+                        <span class = 'd-flex justify-content-center flex-column d-sm-flex flex-sm-row mb-3' >
+                        <button class= 'col-sm-4' id='add_wrkexp' onClick="add_wrkexp();">Add
+                            Field</button>
+                        <button id='rem_wrkexp' class= 'col-sm-4' onClick="rem_wrkexp();">Remove
+                            Field</button>
+                        <button id='toggle_wrkexp' class= 'col-sm-4' onClick="toggle_wrkexp();">Hide Experience</button>
+                    </span>
+                    </div>
+                    <div class="container" id="por" style="display: none;">
+                        <h3 class="text-center inp_title">E. POSITIONS OF RESPONSIBILITY</h3>
+                        <div class="container" id="por_1">
+                            <div class="row">
+                                <label class="col-md-3 col-md-3">Post Held</label>
+                                <section class="col-md-9 col-sm-9 textbox" style="margin-bottom: 2%;">
+                                    <input type="text" placeholder="Post Held.." onkeyup="update(this)"
+                                        id="inp_rtitle1">
+                                </section>
+                                <label class="col-md-3 col-md-3">Organisation
+                                    /Company</label>
+                                <section class="col-md-9 col-sm-9 textbox">
+                                    <input type="text" placeholder="Organisation/Company" onkeyup="update(this)"
+                                        id="inp_cname1">
+                                </section>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-12 col-sm-12 text-center">Holding Period</label>
+                                <label class="col-md-3 col-sm-3">From</label>
+                                <section class="col-md-9" style="margin-bottom: 5%;">
+                                    <!--STYLING PENDING OF ALL DATES-->
+                                    <input class="per_date_inputs" type="month" name="date" id="inp_tdate1"
+                                        onchange="update(this)" placeholder="MM-YYYY format" value="2016-03">
+                                    <!--change to today's date later-->
+                                </section>
+                                <label class="col-md-3 col-sm-3">To</label>
+                                <!--ADD PRESENT FACILITY-->
+                                <section class="col-md-9">
+                                    <input type="month" name="date" onchange="update(this)" id="inp_rdate1"
+                                        placeholder="MM-YYYY format" value="2016-03">
+                                </section>
+                                <div class="col-md-12">
+                                    <span class="col-sm-9"
+                                        style="padding: 0; font-size: small; color :white;">
+                                        Present</span>
+                                            <input onchange="hide(this)" type="checkbox"
+                                                style="transform: scale(1.3);" class="col-sm-3" value="Present" id="chk_rdate1" />
+                                </div>
+                                <label class="col-md-12 col-sm-12 text-center" style=" margin :5% 0 2% 0;">Work
+                                    Description</label>
+                                <section class="col-md-12 textarea" style="margin-bottom: 5%;">
+                                    <textarea class="col-md-12" type="text" id="inp_rdesc1" onkeyup="update(this)"
+                                        placeholder="Worked On...."></textarea>
+                                </section>
+                            </div>
+                        </div>
+                        <span class = 'd-flex  justify-content-center flex-column d-sm-flex flex-sm-row'>
+                        <button class= 'col-sm-4' id='add_por' onClick="add_por();">Add
+                            Field</button>
+                        <button id='rem_por' class= 'col-sm-4' onClick="rem_por();">Remove
+                            Field</button>
+                        <button id='toggle_por' class= 'col-sm-4' onClick="toggle_por();">Hide Section</button>
+                    </span>
+                    </div>
+                    <div class="container" id="skl" style="display: none;">
+                        <h3 class="text-center inp_title">F. SKILLS</h3>
+                        <div class="container" id="skl_1">
+                        <div class="row">
+                            <span class="col-sm-4 text-left" style="color : white;">Skill Heading</span>
+                            <section class="col-sm-8 textbox">
+                                <input type="text" placeholder="Web Dev etc." onkeyup="update(this)" id="inp_sk_title1">
+                            </section>
+                        </div>
+                        <div style="margin-bottom: 2%;">
+                            <span class="col-sm-12 text-left" style="color : white;">Skills</span>
+                            <section id="inp_skill_set_1">
+                                <section class="col-sm-6 textbox" style="margin-bottom: 2%;">
+                                    <input type="text" placeholder="html etc." onkeyup="update(this)" id="inp_sk11">
+                                </section>
+                            </section>
+                            <button id='add_skl1' onClick="add_skill(1);">Add
+                                    Skill</button>
+                            <button id='rem_skl1' onClick="rem_skl(1);">Remove
+                                Skill</button>      
+                        </div>
+                        <br>
+                    </div>
+                        <br>
+                        <hr>
+                        <span class = 'd-flex  justify-content-center flex-column d-sm-flex flex-sm-row' >
+                            <button class= 'col-sm-4' id='add_skl_set' onClick="add_skl_set();">Add
+                                Skill Set</button>
+                            <button id='rem_skl_set' class= 'col-sm-4' onClick="rem_skl_set();">Remove
+                                Skill Set</button>
+                            <button id='toggle_skills' class= 'col-sm-4' onClick="toggle_skills();">Hide Skills</button>
+                        </span>
+                        
+                    </div>
+                    <div class="container" id="cont" style="display: none;">
+                        <h3 class="text-center inp_title">G. CONTACT DETAILS</h3>
+                        <div class="container" id="cont_main">
+                        <div class="container" id="cont_1">
+                            <div class="row" id = "inp_mob">
+                                <label class="col-sm-4">Mobile No.</label>
+                                <section class="col-md-8 col-sm-8 textbox" style="margin-bottom: 2%;" id="mobile">
+                                    <input type="number" placeholder="Mobile Number" onkeyup="update(this)"
+                                        id="inp_mob1" minlength="10" maxlength="10">
+                                </section>
+                            </div>
+                            <span class = 'd-flex  justify-content-center flex-column d-sm-flex flex-sm-row' >
+                                <button class= 'col-sm-4' id='add_mob' onClick="add_mob();">Add
+                                    Field</button>
+                                <button id='rem_mob' class= 'col-sm-4' onClick="rem_mob();">Remove
+                                    Field</button>
+                                    <button id='toggle_mob' class= 'col-sm-4' onClick="toggle_mob();">Hide Section</button>
+                            </span>
+                                <br>
+                                <br>
+                            <section id="add_present">
+                                <div class="row">
+                                    <h3 class="col-md-12 col-md-12" style="font-size :large;">Address(Present)</h3>
+                                    <label class="col-md-4 col-sm-4">Address Line 1</label>
+                                    <section class="col-md-8 textarea" style="margin-bottom: 2%;">
+                                        <textarea type="text" placeholder="Address" onkeyup="update(this)"
+                                            id="inp_aline1"></textarea>
+                                    </section>
+                                </div>
+                                <!-- <button id='add_adr' onClick="add_adl();">Add
+                                        Field</button>
+                                        <br>
+                                        <br> -->
+
+                                <div class="row">
+                                    <label class="col-md-2 col-sm-2">City</label>
+                                    <section class="col-md-4 col-sm-4 textbox">
+                                        <input type="text" placeholder="City" id="inp_a_city1" onkeyup="update(this)">
+                                    </section>
+                                    <label class="col-md-2 col-sm-2">State</label>
+                                    <section class="col-md-4 col-sm-4 textbox">
+                                        <input type="text" placeholder="State" onkeyup="update(this)" id="inp_a_state1">
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <label class="col-md-2 col-sm-2">PIN</label>
+                                    <section class="col-md-4 col-sm-4 textbox">
+                                        <input type="number" placeholder="PIN" onkeyup="update(this)" id="inp_pin1"
+                                           >
+                                    </section>
+                                </div>
+                            </section>
+                            <section class="row">
+                            <span class="col-md-8"
+                                style="margin: 0; padding: 0; font-size: small; color :white; overflow-wrap: break-word;">Present
+                                Address Same as Permanent Address</span>
+                                    <input onchange="check(this)" id="ask_add" type="checkbox"
+                                        style="transform: scale(1.3);" class="col-md-3">
+                                    </section>
+                                    <section id="add_perm">
+                                        <div class="row">
+                                            <h3 class="col-md-12 col-md-12" style="font-size :large;">Address(Permanent)
+                                            </h3>
+                                            <label class="col-md-4 col-sm-4">Address Line 1</label>
+                                            <section class="col-md-8 textarea" style="margin-bottom: 2%;">
+                                                <textarea type="text" placeholder="Address" onkeyup="update(this)"
+                                                    id="inp_p_aline1"></textarea>
+                                            </section>
+                                        </div>
+                                        <!-- <button id='add_adr' onClick="add_adl();">Add
+                                                Field</button>
+                                            <br>
+                                            <br> -->
+                                        <div class="row">
+                                            <label class="col-md-2 col-sm-2">City</label>
+                                            <section class="col-md-4 col-sm-4 textbox">
+                                                <input type="text" placeholder="City" id="inp_p_a_city1"
+                                                    onkeyup="update(this)">
+                                            </section>
+                                            <label class="col-md-2 col-sm-2">State</label>
+                                            <section class="col-md-4 col-sm-4 textbox">
+                                                <input type="text" placeholder="State" onkeyup="update(this)"
+                                                    id="inp_p_a_state1">
+                                            </section>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-md-2 col-sm-2">PIN</label>
+                                            <section class="col-md-4 col-sm-4 textbox">
+                                                <input type="number" placeholder="PIN" onkeyup="update(this)" id="inp_p_pin1"
+                                                    >
+                                            </section>
+                                        </div>
+                                    </section>
+                                    <hr>
+                                    
+                                </div>
+                                <span id = 'add_toggle' class = 'd-flex  justify-content-center flex-column d-sm-flex flex-sm-row' >
+                                    <button id='toggle_add' class= 'col-sm-4' onClick="toggle_add();">Hide Address</button>
+                                 </span>
+                                    <div class="row" id = 'cont_2'>
+                                        <label class="col-md-12 col-md-12" style="font-size :large;">Public
+                                            Profiles</label>
+                                        <hr>
+                                        <label class="col-md-3 col-sm-3">LinkedIn</label>
+                                        <section class="col-md-8 col-sm-8 textbox" style="margin-bottom: 2%;">
+                                            <input type="text" placeholder="LinkedIn Profile Link"
+                                                onkeyup="update(this)" id="inp_linkedin">
+                                        </section>
+                                        <label class="col-md-3 col-sm-3">GitHub</label>
+                                        <section class="col-md-8 col-sm-8 textbox" style="margin-bottom: 2%;">
+                                            <input type="text" placeholder="Github Profile Link" onkeyup="update(this)"
+                                                id="inp_github">
+                                        </section>
+                                    </div>
+                                    <span id = 'prof_toggle' class = 'd-flex  justify-content-center flex-column d-sm-flex flex-sm-row' >
+                                        <button id='toggle_prof' class= 'col-sm-4' onClick="toggle_prof();">Hide Profiles</button>
+                                </span>
+                                <hr>
+                        </div>
+                                <span  class = 'd-flex  justify-content-center flex-column d-sm-flex flex-sm-row' >
+                                    <button id='toggle_cont' class= 'col-sm-6 col-xs-12' onClick="toggle_cont();">Hide Personal Info</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- RESUME -->
+    <div id="main" class="row d-flex justify-content-center">
+        <h3 id = "head" class="col-sm-12">Resume</h3>
+        <section id="display" class="col-md-8">
+            <!-- header section -->
+            <!-- <section class = "row"> -->
+                <!-- <span class=" title text-center" id="name" style="font-size: 2vw; margin:0; width:100% ; padding:0; border-bottom: 0;"></span>\ -->
+                <span class=" title text-center" id="name" style="font-size: 2vw; margin:2%; width:75% ; padding:0; border-bottom: 0;"></span>
+                <img style="float: right !important;" id="logo" src="sources/coep.jpeg"/>
+            <!-- </section> -->
+            <!-- header -->
+            <section class="row justify-content-center align-content-center ml-0" style="padding:0">
+                <span class="col-md-12 col-sm-12" id="contact" style="align-content: right; font-size: small;"></span><br>
+                <span class="col-md-12 col-sm-12" id="email" style="display :block ; font-size: small;" dir="ltr"></span>
+                <span class="col-md-12 col-sm-12" id="web" style="align-content: right; font-size: small;"></span><br>
+            </section>
+            <hr>
+            <!-- Education -->
+            <section class="row" style="margin : 0;">
+
+                <h2  class="col-md-12 text-left justify-content-left title" style="width: 100%;">EDUCATION
+                               </h2>
+
+                <ul class="col-md-12 justify-content-left align-content-left text-left edu" id="education">
+                    <li>
+                        <span class="col-md-4 col-sm-8 text-left" id="stdp1" style="font-size: medium;width: 100%;"></span><br>
+                        <span class="col-sm-3 text-left" id="yr1" style="font-size : 0.8rem; width: 100%;"></span>
+                        <span class="col-sm-3 text-left" id="cgpa1" style="font-size : 0.8rem; width: 100%;"></span><br>
+                        <span class="col-md-6" id="uni1" style="font-size: medium; width: 100%;"></span><br>
+                        <span class="col-md-6" id="inst1" style=" font-size: medium;width: 100%;"></span>
+
+                    </li>
+                </ul>
+            </section>
+            <hr>
+            <!-- PROJECTS -->
+            <section class="row" style="margin : 0;">
+
+                <h2  class="col-md-12 text-left justify-content-left title" style="width: 100%;">PROJECTS
+                </h2>
+
+                <ul class="col-md-12 text-left proj justify-content-left align-content-left" id="projects">
+                    <li>
+                        <span class="col-md-12 col-sm-12 text-left" id="ptitle1" style="font-size: medium;width: 100%;"></span><br>
+                        <span class="col-md-12 font-italic text-right" style="font-size:0.75rem ;" id="pdate1"
+                            style="width: 100%;"></span><br>
+                        <div class="col-md-12" style="font-size: 0.9rem; overflow-wrap: break-word;" id="pdesc1"></div>
+                        <br>
+                    </li>
+
+                </ul>
+            </section>
+            <!-- WORK EXPERIENCE -->
+            <section class="row" style="margin : 0;">
+
+                <h2 class="col-md-12 text-left justify-content-left title" style="width: 100%;">PAST
+                    WORK EXPERIENCE
+                </h2>
+                <ul class="col-md-12 text-left justify-content-left align-content-left exp" id="work_experience">
+                    <li>
+                        <span class="col-md-12 col-sm-8 text-left" id="jtitle1" style="font-size: medium;width: 100%;"></span><br>
+                        <span class="col-md-7 " style="text-emphasis : 700px; font-size:0.9rem;" id="oname1"
+                            style="width: 100%;"></span>
+                        <span class="col-md-5 font-italic text-right" style="font-size:0.75rem;" id="wdate1"
+                            style="width: 100%;"></span><br>
+                        <div class="col-md-12" style="font-size: 0.85rem; overflow-wrap: break-word;" id="wdesc1"></div>
+                        <br>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- POSITIONS OF RESPONSIBILITY -->
+
+            <section class="row" style="margin : 0;">
+
+                <h2  class="col-md-12 text-left justify-content-left title" style="width: 100%;">
+                    POSITIONS OF RESPONSIBILITY
+                </h2>
+
+
+                <ul class="col-md-12 text-left justify-content-left align-content-left por"
+                    id="positions_of_responibility">
+                    <li>
+                        <span class="col-md-12 col-sm-8 text-left" style="font-size: medium;" id="rtitle1" style="width: 100%;"></span><br>
+                        <span class="col-md-7 " style="text-emphasis : 700px; font-size:0.9rem;" id="cname1"
+                            style="width: 100%;"></span>
+                        <span class="col-md-5 font-italic text-right" style="font-size:0.75rem;" id="prdate1"
+                            style="width: 100%;"></span><br>
+                        <div class="col-md-12" style="font-size: 0.85rem; overflow-wrap: break-word;" id="rdesc1"></div>
+                        <br>
+                    </li>
+                </ul>
+            </section>
+            <!-- SKILLS -->
+
+            <section class="row" style="margin : 0;" id="skills">
+
+                <h2 id="title" class="col-md-12 text-left justify-content-left title" style="width: 100%;">SKILLS
+                </h2>
+                <section class="col-md-12 justify-content-left align-content-left skls" style="padding :0;" id = "skils">
+                    <section class="row" style="margin : 0;">
+                        <span class="col-md-3 text-left" style="height: 100%; font-size: small;overflow-wrap: break-word;"><b
+                                id="sk_title1"></b></span>
+                        <section class="col-md-9 justify-content-left align-content-left" style="padding :0;"
+                            id="skill_set_1">
+                            <span class="col-md-12 text-left ml-3"
+                                style=" text-emphasis : 700px ; font-size: small; overflow-wrap: break-word; padding: 0;"
+                                id="sk_list1"></span>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <!-- ADDRESS -->
+            <section class="row" style="margin : 0;" id="address">
+
+                <h2  class="col-md-12 text-left justify-content-left title" style="width: 100%;">
+                    PERSONAL INFORMATION
+                <section class="col-md-12 justify-content-left align-content-left addr" style="padding :0;">
+                    <section class="row" style="margin : 0;">
+                        <ul class="col-md-12 justify-content-left align-content-left text-left"  style="padding :0;width:max-content; list-style: none;" id = 'addmob'>
+                            <li id = "mob">
+                                <span class="col-sm-4 text-left" style=" font-size: small; margin : 0;"><b style="margin: 0;">Mobile&nbspNumber</b></span>
+                                <span class=" text-left col-sm-4" style=" font-size: small;" id="mob_list"></span>
+                            </li>
+                        </ul>
+                    </section>
+                    <br>
+                    <section class="col-md-12 text-center" id = 'a_title'><span style="width: 100%; font-size: small;">Address</span></section>
+                    <section class="row" style="margin : 0;">
+                        <ul class="col-md-12 justify-content-left align-content-left text-left" style="padding :0;width:max-content; list-style: none;"
+                            id="present">
+                            <li>
+                                <span class="col-sm-4" style="font-size: x-small;width: 100%;" id="p-temp"><b>-Present-</b></span><br>
+                                <span class="col-md-12 text-left ml-3"
+                                    style=" font-size: small; overflow-wrap: break-word; padding: 0;"
+                                    id="aline1"></span><br>
+                                <span class="col-md-12 text-left ml-3"
+                                    style=" font-size: small; overflow-wrap: break-word; padding: 0;"
+                                    id="bline1"></span>
+                            </li>
+                        </ul>
+                    </section>
+                        <span class="col-md-2 text-left" style="height: 100%; font-size: small;"><b>&nbsp</b></span>
+                        <section class="row" style="margin : 0;">
+
+                        <ul class="col-md-12 justify-content-left align-content-left text-left" style="padding :0;width:max-content; list-style: none;"
+                            id="permanent">
+                            <li>
+                                <span class="col-sm-4" style="font-size: x-small;">-Permanent-</span><br>
+                                <span class="col-md-12 text-left ml-3"
+                                    style=" font-size: small; overflow-wrap: break-word; padding: 0;"
+                                    id="p_aline1"></span><br>
+                                <span class="col-md-12 text-left ml-3"
+                                    style=" font-size: small; overflow-wrap: break-word; padding: 0;"
+                                    id="p_bline1"></span>
+                            </li>
+                        </ul>
+                    </section>
+                    <span class="col-md-2 text-left" style="height: 100%; font-size: small;"><b>&nbsp</b></span>
+                    <section id = 'p_title' class="col-md-12 text-center"><span style="width: 100%; font-size: small;">Public
+                        Profiles</span></section>
+
+                    <section class="row" style="margin : 0;">
+                        <section class="col-md-9 justify-content-left align-content-left" style="padding :0;" id = 'prof'>
+                            <span href = "http://www.google.com" class="col-md-12 text-left ml-3"
+                                style=" font-size: small; overflow-wrap: break-word; padding: 0;"
+                                id="linkedin"></span><br>
+                            <span class="col-md-12 text-left ml-3"
+                                style=" font-size: small; overflow-wrap: break-word; padding: 0;"
+                                id="github"></span><br>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <div id="element"></div>
+    </div>
+
+
+    <!------------- SCRIPTS ---------------------->
+    <!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/jspdf/1.2.61/jspdf.min.js"></script> -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/insert.js"></script>
+    <script type="text/javascript" src="js/switch.js"></script>
+    <script type="text/javascript" src="js/add.js"></script>
+    <!-- <script type="text/javascript" src="js/json.js"></script> -->
+    <script type="text/javascript" src="js/validate.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script>
+        const query = location.search.split('mis=')[1]; 
+        if(query){
+            fetchUser(query);   
+        }
+        else{
+            alert('URL TAMPERED')
+            window.location.href = "http://www.coep.org.in";    //to be changed
+
+        }
+        /**
+         * width adjustment of the resume
+        */
+        document.getElementById("main").style.width = String(window.innerWidth - document.getElementById("left").offsetWidth) + "px";
+        function adjust_width(accept) {
+            // alert(document.getElementById("main").style.width);
+            if (document.getElementById("main").style.width == '100vw') {
+                document.getElementById("main").style.width = String(window.innerWidth - document.getElementById("left").offsetWidth) + "px";
+            }
+            else
+                document.getElementById("main").style.width = '100vw';
+
+        }
+        $(window).resize(function () {
+            if (this.resizeTO) clearTimeout(this.resizeTO);
+            this.resizeTO = setTimeout(function () {
+                $(this).trigger('resizeEnd');
+            }, 500);
+        });
+        $(window).bind('resizeEnd', function () {
+            if (!(document.getElementById("main").style.width == '100vw'))
+                document.getElementById("main").style.width = String(window.innerWidth - document.getElementById("left").offsetWidth) + "px";
+
+        });
+
+    </script>
+    
+    
+</body>
+
+</html>
