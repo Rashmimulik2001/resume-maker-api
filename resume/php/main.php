@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "Rashmivm#1";
+$pass = "";
 $dbname = "internship_portal";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
@@ -64,23 +64,27 @@ if (isset($_POST['insert'])) {
 if (isset($_POST['fetch'])) {
   $uid = $_POST['uid'];
   $query = "SELECT * FROM `resume_details` WHERE  `ID` = $uid";
+  error_log($query);
   $status = true;
   $result = $conn->query($query);
-  $row = $result->fetch_assoc();
-  if ($row) {
-    error_log('data retrieved successfully');
-    error_log(json_encode($row));
-    $response['status'] = 200;
-    $response['data'] = $row;
-    error_log(json_encode($response['status']));
-    echo json_encode($response);
-    die;
-  } else {
-    $response['status'] = 500;
-    error_log(json_encode($response['status']));
-    echo json_encode($response);
-    die;
+
+  if ($result) {
+    $row = $result->fetch_assoc();
+    if ($row) {
+      error_log('data retrieved successfully');
+      error_log(json_encode($row));
+      $response['status'] = 200;
+      $response['data'] = $row;
+      error_log(json_encode($response['status']));
+      echo json_encode($response);
+      die;
+    }
   }
+
+  $response['status'] = 500;
+  error_log(json_encode($response['status']));
+  echo json_encode($response);
+  die;
 }
 if (isset($_POST['update'])) {
   // error_log("HRLLO");
